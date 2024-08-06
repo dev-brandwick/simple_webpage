@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Simple Form</h1>
+<form id="myForm">
+    <label>
+        Name:
+        <input type="text" id="name" name="name" required>
+    </label>
+    <label>
+        Password:
+        <input type="password" id="password" name="password" required>
+    </label>
+    <label>
+        <input type="checkbox" id="checkbox" required> I agree to the terms and conditions
+    </label>
+    <button type="submit" id="submit" disabled>Submit</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const nameField = document.getElementById("name");
+        const passwordField = document.getElementById("password");
+        const checkboxField = document.getElementById("checkbox");
+        const submitButton = document.getElementById("submit");
+
+        nameField.focus();
+
+        function checkFormCompletion() {
+            if (nameField.value && passwordField.value && checkboxField.checked) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+
+        nameField.addEventListener("input", checkFormCompletion);
+        passwordField.addEventListener("input", checkFormCompletion);
+        checkboxField.addEventListener("change", checkFormCompletion);
+    });
+</script>
+</body>
+</html>
